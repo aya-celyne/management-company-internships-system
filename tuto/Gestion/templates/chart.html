@@ -1,0 +1,35 @@
+<div id="container" style="width: 75%;">
+    <canvas id="pie-chart"></canvas>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js"></script>
+<script>
+    var config = {
+        type: 'bar',
+        data: {
+            datasets: [{
+                data:{{data | safe}},
+                backgroundColor: [
+                                	 "#DEB887",
+                    "#A9A9A9",
+                    "#DC143C",
+                    "#F4A460",
+                    "#2E8B57"
+                ],
+                label: 'Nombre de Stagiares'
+            }],
+ 
+            labels: {{labels | safe}}
+        },
+        options: {
+            responsive: true
+        }
+    };
+
+    window.onload = function() {
+        var ctx = document.getElementById('pie-chart').getContext('2d');
+        window.myPie = new Chart(ctx, config);
+    };
+
+    
+</script>
